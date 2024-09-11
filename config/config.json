@@ -1,0 +1,10 @@
+{
+    "github": {
+      "api_url": "https://api.github.com",
+      "token": ""
+    },
+    "gitlab": {
+      "api_url": "https://gitlab.com/api/v4",
+      "token": ""
+    }
+  }
