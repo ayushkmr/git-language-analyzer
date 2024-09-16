@@ -4,7 +4,7 @@ from git_providers.gitlab import GitLabProvider
 from language_analyzer import LanguageAnalyzer
 from config_manager import ConfigManager
 from utils.logger import get_logger
-from utils.exceptions import GitLanguageAnalyzerError, UserNotFoundError
+from utils.exceptions import GitLanguageAnalyzerError, UserNotFoundError, ConfigurationError
 from utils.helpers import parse_git_url
 
 class GitLanguageAnalyzer:
@@ -30,9 +30,13 @@ class GitLanguageAnalyzer:
         api_url = input(f"Enter {provider} API URL: ")
         token = input(f"Enter {provider} access token: ")
         
-        self.config_manager.set_provider_config(provider, api_url, token)
-        self.logger.info(f"Provider {provider} configured successfully")
-        print(f"{provider} configuration updated.")
+        try:
+            self.config_manager.set_provider_config(provider, api_url, token)
+            self.logger.info(f"Provider {provider} configured successfully")
+            print(f"{provider} configuration updated.")
+        except ConfigurationError as e:
+            self.logger.error(f"Configuration error: {str(e)}")
+            print(f"Error: {str(e)}")
 
     def analyze_profile(self, profile_url):
         self.logger.info(f"Analyzing profile: {profile_url}")

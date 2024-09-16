@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from utils.logger import get_logger
-from utils.exceptions import ApiError, RateLimitError
+from src.utils.logger import get_logger
+from src.utils.exceptions import ApiError, RateLimitError
 
 class GitProvider(ABC):
     def __init__(self, api_url, token):

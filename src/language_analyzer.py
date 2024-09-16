@@ -1,6 +1,6 @@
 from collections import Counter
-from utils.logger import get_logger
-from utils.helpers import calculate_language_percentages
+from src.utils.logger import get_logger
+from src.utils.helpers import calculate_language_percentages
 
 class LanguageAnalyzer:
     def __init__(self, git_provider):

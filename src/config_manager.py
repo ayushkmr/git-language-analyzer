@@ -1,7 +1,7 @@
 import json
 import os
-from utils.logger import get_logger
-from utils.exceptions import ConfigurationError
+from src.utils.logger import get_logger
+from src.utils.exceptions import ConfigurationError
 
 class ConfigManager:
     def __init__(self, config_path='config/config.json'):

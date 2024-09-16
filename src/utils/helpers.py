@@ -1,5 +1,5 @@
 from urllib.parse import urlparse
-from utils.exceptions import ConfigurationError
+from src.utils.exceptions import ConfigurationError
 
 def parse_git_url(url):
     parsed_url = urlparse(url)
