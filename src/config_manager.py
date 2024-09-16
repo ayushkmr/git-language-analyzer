@@ -4,7 +4,7 @@ from src.utils.logger import get_logger
 from src.utils.exceptions import ConfigurationError
 
 class ConfigManager:
-    def __init__(self, config_path='config/config.json'):
+    def __init__(self, config_path='src/config/config.json'):
         self.config_path = config_path
         self.logger = get_logger(self.__class__.__name__)
         self.config = self.load_config()

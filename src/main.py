@@ -1,10 +1,16 @@
+import os
 import sys
+
+# Add the src directory to the Python path
+src_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, src_dir)
+
 from git_providers.github import GitHubProvider
 from git_providers.gitlab import GitLabProvider
 from language_analyzer import LanguageAnalyzer
 from config_manager import ConfigManager
 from utils.logger import get_logger
-from utils.exceptions import GitLanguageAnalyzerError, UserNotFoundError, ConfigurationError
+from utils.exceptions import GitLanguageAnalyzerError, UserNotFoundError, ConfigurationError, ApiError
 from utils.helpers import parse_git_url
 
 class GitLanguageAnalyzer:
@@ -58,6 +64,9 @@ class GitLanguageAnalyzer:
             print(f"Error: {str(e)}")
         except GitLanguageAnalyzerError as e:
             self.logger.error(f"Error analyzing profile: {str(e)}")
+            print(f"Error: {str(e)}")
+        except ApiError as e:
+            self.logger.error(f"API error: {str(e)}")
             print(f"Error: {str(e)}")
         except Exception as e:
             self.logger.exception(f"Unexpected error: {str(e)}")
